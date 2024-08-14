@@ -1,0 +1,12 @@
+FROM registry.cn-shanghai.aliyuncs.com/mytechathonbase/ubuntu:22.04
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends wget unzip \
+    && mkdir -p /home/mytechathon/terraform && cd /home/mytechathon/terraform \
+    && wget https://releases.hashicorp.com/terraform/1.9.4/terraform_1.9.4_linux_amd64.zip \
+    && unzip terraform_1.9.4_linux_amd64.zip \
+    && rm terraform_1.9.4_linux_amd64.zip
+
+RUN mkdir -p /home/mytechathon/providers && cd /home/mytechathon/providers \
+    && wget https://github.com/huaweicloud/terraform-provider-huaweicloud/releases/download/v1.67.1/terraform-provider-huaweicloud_1.67.1_linux_amd64.zip \
+    && unzip terraform-provider-huaweicloud_1.67.1_linux_amd64.zip
